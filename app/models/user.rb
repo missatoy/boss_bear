@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   after_create :create_profile
+  has_many :bookings
+  has_one :profile
 
   def create_profile
     Profile.create(user: self)
