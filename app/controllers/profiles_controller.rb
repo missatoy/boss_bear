@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :find_profile, only: [:show, :edit, :update]
 
   def show
+    @bookings = @profile.bookings
   end
 
   def edit
