@@ -1,16 +1,20 @@
-<h1>Hello <%= @profile.first_name %> </h1>
+<div class="container">
 
-<div class="mt-4">
-  <div>
-    <%= render "form", profile: @profile %>
-  </div>
-</div>
+  <h1>Hello <%= @profile.first_name %> </h1>
 
-<div class="mt-4">
-  <% @bookings.each do |booking| %>
+  <div class="mt-4">
     <div>
-      <p><%= link_to "Delete booking", bear_booking_path(booking.bear, booking),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      <%= render "form", profile: @profile %>
     </div>
-  <% end %>
+  </div>
+
+  <div class="mt-4">
+    <% @bookings.each do |booking| %>
+      <div>
+        <p><%= link_to "Delete booking", bear_booking_path(booking.bear, booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      </div>
+    <% end %>
+  </div>
+
 </div>
