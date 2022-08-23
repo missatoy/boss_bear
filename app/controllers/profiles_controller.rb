@@ -1,6 +1,4 @@
 class ProfilesController < ApplicationController
-
-  has_one_attached :photo
   before_action :find_profile, only: [:show, :edit, :update]
 
 

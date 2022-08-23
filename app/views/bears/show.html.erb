@@ -2,7 +2,9 @@
 <h2><%= @bear.personality %></h2>
 
 <div class="">
-<%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
+  <% if @bear.photo.attached? %>
+    <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
+  <% end %>
 </div>
 
 <p><%= @bear.description %></p>
