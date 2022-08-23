@@ -1,16 +1,29 @@
-<h1>Hello <%= @profile.first_name %> </h1>
+<div>
+  <h1>Hello <%= @profile.first_name %> </h1>
 
-<div class="mt-4">
-  <div>
-    <%= render "form", profile: @profile %>
-  </div>
-</div>
-
-<div class="mt-4">
-  <% @bookings.each do |booking| %>
+  <div class="mt-4">
     <div>
-      <p><%= link_to "Delete booking", bear_booking_path(booking.bear, booking),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      <%= simple_form_for @profile do |f| %>
+
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :address %>
+        <%= f.submit %>
+
+      <% end %>
     </div>
-  <% end %>
+  </div>
+
+  <div class="mt-4">
+    <% @bookings.each do |booking| %>
+      <div>
+        <p><%= link_to "Delete booking", bear_booking_path(booking.bear, booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "Homepage", bears_path %>
+  </div>
 </div>
