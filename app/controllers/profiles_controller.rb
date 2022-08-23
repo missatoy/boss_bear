@@ -1,7 +1,5 @@
 class ProfilesController < ApplicationController
-
   before_action :find_profile, only: %i[show edit update]
-
 
   def show
     @bookings = @profile.bookings
