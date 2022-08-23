@@ -1,0 +1,11 @@
+<%= @bear.name %>
+<%= @bear.personality %>
+<%= @bear.description %>
+<%= @bear.price %>
+
+
+<%= simple_form_for(@booking) do |f| %>
+  <%= f.input :date_start %>
+  <%= f.input :date_finish %>
+  <%= f.submit %>
+<% end %>
