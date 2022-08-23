@@ -1,5 +1,6 @@
 class BearsController < ApplicationController
   before_action :find_bear, only: %i[show edit destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
   # As a visitor I can display all bears
   def index
     @bears = Bear.all
@@ -16,10 +17,11 @@ class BearsController < ApplicationController
 
   def create
     @bear = Bear.new(set_params)
+    @bear.user = current_user
     if @bear.save
       redirect_to bear_path(@bear)
     else
-      render :new
+      render :new, notice: "Oops. Something went wrong..."
     end
   end
 
