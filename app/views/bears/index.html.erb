@@ -1,0 +1,17 @@
+<h1>Gummy bears to rent</h1>
+
+<div class="d-flex flex-wrap">
+
+  <% @bears.each do |bear|%>
+    <div class="card m-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= bear.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= bear.personality %></h6>
+        <p class="card-text"><%= bear.description %></p>
+        <p class="card-text"><strong><%= bear.price %></strong></p>
+        <a href="#" class="card-link">Book now</a>
+      </div>
+    </div>
+  <% end %>
+
+</div>
