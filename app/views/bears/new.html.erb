@@ -1,0 +1,9 @@
+<h1>Create new Bear</h1>
+
+<%= simple_form_for(@bear) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :personality %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.submit %>
+<% end %>
