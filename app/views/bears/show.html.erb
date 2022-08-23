@@ -1,8 +1,12 @@
 <h1><%= @bear.name %></h1>
 <h2><%= @bear.personality %></h2>
 
-<%= @bear.description %>
-<%= @bear.price %>
+<div class="">
+<%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
+</div>
+
+<p><%= @bear.description %></p>
+<p><%= @bear.price %></p>
 
 
 <%= simple_form_for([@bear, @booking]) do |f| %>

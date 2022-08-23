@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  has_one_attached :photo
+
   def show
     @profile = Profile.find(params[:id])
   end
