@@ -1,16 +1,17 @@
 class ProfilesController < ApplicationController
+
   has_one_attached :photo
+  before_action :find_profile, only: [:show, :edit, :update]
+
 
   def show
-    @profile = Profile.find(params[:id])
+    @bookings = @profile.bookings
   end
 
   def edit
-    @profile = Profile.find(params[:id])
   end
 
   def update
-    @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
       redirect_to profile_path(@profile), notice: 'Updated successfuly'
     else
@@ -22,5 +23,9 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :address)
+  end
+
+  def find_profile
+    @profile = Profile.find(params[:id])
   end
 end
