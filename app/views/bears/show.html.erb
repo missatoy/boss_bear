@@ -1,0 +1,12 @@
+<h1><%= @bear.name %></h1>
+<h2><%= @bear.personality %></h2>
+
+<%= @bear.description %>
+<%= @bear.price %>
+
+
+<%= simple_form_for([@bear, @booking]) do |f| %>
+  <%= f.input :date_start %>
+  <%= f.input :date_finish %>
+  <%= f.submit %>
+<% end %>
