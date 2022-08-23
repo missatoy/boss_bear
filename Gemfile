@@ -79,4 +79,7 @@ group :test do
   gem "webdrivers"
 end
 
+  # Simple form
 gem "simple_form", github: "heartcombo/simple_form"
+  # Secret keys
+gem "dotenv-rails", groups: [:development, :test]
