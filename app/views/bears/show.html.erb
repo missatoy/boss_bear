@@ -11,14 +11,14 @@
 
       <div>
         <p><%= @bear.description %></p>
-        <p><%= @bear.price %></p>
+        <p class="font-weight-bold"><%= @bear.price %></p>
       </div>
     </div>
 
     <div class="col-1">
     </div>
 
-    <div class="col-4 p-4 bg-white rounded shadow-sm">
+    <div class="col-4 p-4 bg-white rounded shadow p-3 mb-5 bg-white rounded">
       <%= simple_form_for([@bear, @booking]) do |f| %>
         <div class="">
           <%= f.input :date_start %>
