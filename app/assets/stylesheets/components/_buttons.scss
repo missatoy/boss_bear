@@ -47,3 +47,15 @@
   border: 2px solid #413e5b;
   color: #413e5b;
 }
+
+.price-button {
+  padding: 15px 20px 15px 20px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: solid 1px darkgrey;
+  border-radius: 30px;
+  width: 85px;
+  // border-radius: 30px;
+  // box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
