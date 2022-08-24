@@ -1,26 +1,33 @@
-<div class="container d-flex">
+<div class="container">
+  <div class="d-flex align-items-start justify-content-between mt-4">
+    <div class="col-7">
+      <div>
+        <% if @bear.photo.attached? %>
+          <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
+        <% end %>
+        <h1><%= @bear.name %></h1>
+        <h2><%= @bear.personality %></h2>
+      </div>
 
-  <div>
-    <div class="col-8">
-      <% if @bear.photo.attached? %>
-        <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
+      <div>
+        <p><%= @bear.description %></p>
+        <p><%= @bear.price %></p>
+      </div>
+    </div>
+
+    <div class="col-1">
+    </div>
+
+    <div class="col-4 p-4 bg-white rounded shadow-sm">
+      <%= simple_form_for([@bear, @booking]) do |f| %>
+        <div class="">
+          <%= f.input :date_start %>
+        </div>
+        <%= f.input :date_finish %>
+        <div>
+          <%= f.submit %>
+        </div>
       <% end %>
-      <h1><%= @bear.name %></h1>
-      <h2><%= @bear.personality %></h2>
-    </div>
-
-    <div>
-      <p><%= @bear.description %></p>
-      <p><%= @bear.price %></p>
     </div>
   </div>
-
-  <div class="col-4">
-    <%= simple_form_for([@bear, @booking]) do |f| %>
-      <%= f.input :date_start %>
-      <%= f.input :date_finish %>
-      <%= f.submit %>
-    <% end %>
-  </div>
-
 </div>
