@@ -23,4 +23,12 @@
       </div>
     <% end %>
   </div>
+
+  <div class="mt-4">
+    <% @favourites.each do |favourite| %>
+      <div>
+        <%= favourite.bear.name %>
+      </div>
+    <% end %>
+  </div>
 </div>

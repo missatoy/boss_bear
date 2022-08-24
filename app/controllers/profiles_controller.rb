@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def show
     @bookings = @profile.bookings
+    @favourites = current_user.favourites
   end
 
   def edit

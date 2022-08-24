@@ -9,6 +9,7 @@ class BearsController < ApplicationController
   # As a visitor I can display one bear's details
   def show
     @booking = Booking.new
+    @favourite = current_user.favourites.where(bear_id: @bear.id)
   end
 
   # As a renter I can create a new bear

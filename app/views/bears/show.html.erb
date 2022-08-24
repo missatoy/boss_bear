@@ -12,6 +12,15 @@
       <div>
         <p><%= @bear.description %></p>
         <p><%= @bear.price %></p>
+        <% if @favourite.exists? %>
+          <%= link_to bear_favourite_path(@bear, @favourite) ,data: { 'turbo-method': :delete } do %>
+            <i class="fa-solid fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to bear_favourites_path(@bear) ,data: { 'turbo-method': :post } do %>
+            <i class="fa-regular fa-heart"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
 

@@ -3,11 +3,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @bear = Bear.find(params[:bear_id])
-    @booking.bear=@bear
+    @booking.bear = @bear
     if @booking.save
       redirect_to bears_path
     else
-      render "new"
+      render :new
     end
   end
 
