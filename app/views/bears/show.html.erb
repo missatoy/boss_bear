@@ -23,7 +23,7 @@
       <%= simple_form_for([@bear, @booking]) do |f| %>
         <%= f.input :date_start, as: :string, input_html: {class:"datepicker"} %>
         <%= f.input :date_finish, as: :string, input_html: {class:"datepicker"} %>
-        <%= f.submit %>
+        <%= f.submit class: 'button primary-button' %>
       <% end %>
     </div>
   </div>
