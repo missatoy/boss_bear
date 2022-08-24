@@ -12,6 +12,10 @@
 @import "components/index";
 @import "pages/index";
 @import "components/banner";
-
-
 @import "components/form";
+@import "components/cards";
+@import "components/buttons";
+
+body {
+  background-color: #FFFDF4;
+}
