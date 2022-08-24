@@ -2,7 +2,7 @@
   <div class="d-flex align-items-start justify-content-between mt-4">
     <div class="col-7">
       <div>
-        <div class="mb-3">
+        <div class="card-bear mb-3">
           <% if @bear.photo.attached? %>
             <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
           <% end %>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-4 p-4 bg-white rounded shadow p-3 mb-5 bg-white rounded">
-      <div data-controller="flatpickr">
+      <div data-controller="flatpickr" class="form-height">
       <%= simple_form_for([@bear, @booking]) do |f| %>
         <%= f.input :date_start, as: :string, input_html: {class:"datepicker"} %>
         <%= f.input :date_finish, as: :string, input_html: {class:"datepicker"} %>
