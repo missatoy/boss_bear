@@ -2,17 +2,18 @@
 
   <div class="container">
 
-  <div class="d-flex flex-wrap">
+  <div class="d-flex flex-wrap pt-4">
     <% @bears.each do |bear|%>
-      <div class="card m-3" style="width: 18rem;">
+      <div class="card shadow-sm m-3" style="width: 18rem;">
           <% if bear.photo.attached? %>
             <%= cl_image_tag bear.photo.key, height: 400, width: 400, crop: :fill, class: "card-img-top" %>
           <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= bear.name %></h5>
           <h6 class="card-subtitle mb-2 text-muted"><%= bear.personality %></h6>
-          <p class="card-text"><%= bear.description %></p>
-          <p><%= link_to "Read more", bear_path(bear.id) %></p>
+          <div class="mt-4 mb-3">
+            <%= link_to "Read more", bear_path(bear.id), class: 'button card-button' %>
+          </div>
         </div>
       </div>
     <% end %>
