@@ -2,16 +2,19 @@
   <div class="d-flex align-items-start justify-content-between mt-4">
     <div class="col-7">
       <div>
-        <% if @bear.photo.attached? %>
-          <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
-        <% end %>
-        <h1><%= @bear.name %></h1>
-        <h2><%= @bear.personality %></h2>
+        <div class="mb-3">
+          <% if @bear.photo.attached? %>
+            <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
+          <% end %>
+        </div>
+        <h1 class="mb-3"><%= @bear.name %></h1>
+        <h4 class="mb-3"><%= @bear.personality %></h4>
+        <p class="mb-3"><%= @bear.description %></p>
+        <p class="price-button">€<%= @bear.price %></p>
       </div>
 
       <div>
-        <p><%= @bear.description %></p>
-        <p class="font-weight-bold"><%= @bear.price %></p>
+
       </div>
     </div>
 
