@@ -1,20 +1,22 @@
-<h1>Boss Bear</h1>
-<p>The sweet kick you needed</p>
+<%= render "layouts/banner" %>
 
+  <div class="container">
 
-<div class="d-flex flex-wrap">
-
-  <% @bears.each do |bear|%>
-    <div class="card m-3" style="width: 18rem;">
-        <% if bear.photo.attached? %>
-          <%= cl_image_tag bear.photo.key, height: 400, width: 400, crop: :fill, class: "card-img-top" %>
-        <% end %>
-      <div class="card-body">
-        <h5 class="card-title"><%= bear.name %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= bear.personality %></h6>
-        <%= link_to "Read more", bear_path(bear) %>
+  <div class="d-flex flex-wrap">
+    <% @bears.each do |bear|%>
+      <div class="card m-3" style="width: 18rem;">
+          <% if bear.photo.attached? %>
+            <%= cl_image_tag bear.photo.key, height: 400, width: 400, crop: :fill, class: "card-img-top" %>
+          <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= bear.name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= bear.personality %></h6>
+          <p class="card-text"><%= bear.description %></p>
+          <a href="#" class="card-link">Book now</a>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+
+  </div>
 
 </div>
