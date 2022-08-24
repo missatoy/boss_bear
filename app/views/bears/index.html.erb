@@ -10,10 +10,9 @@
           <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= bear.name %></h5>
-          <h6 class="card-subtitle text-muted"><%= bear.personality %></h6>
-          <div class="mt-4 mb-3">
-            <a href="#" class="button card-button">Book now</a>
-          </div>
+          <h6 class="card-subtitle mb-2 text-muted"><%= bear.personality %></h6>
+          <p class="card-text"><%= bear.description %></p>
+          <p><%= link_to "Read more", bear_path(bear.id) %></p>
         </div>
       </div>
     <% end %>
