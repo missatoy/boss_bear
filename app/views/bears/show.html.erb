@@ -15,18 +15,24 @@
       </div>
     </div>
 
-    <div class="col-1">
-    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <% if @bear.photo.attached? %>
+          <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
+        <% end %>
+        <p></p>
+        <p><%= @bear.description %></p>
+        <p><%= @bear.price %></p>
+      </div>
+      <div class="col-sm">
 
     <div class="col-4 p-4 bg-white rounded shadow p-3 mb-5 bg-white rounded">
+      <div data-controller="flatpickr">
       <%= simple_form_for([@bear, @booking]) do |f| %>
-        <div class="">
-          <%= f.input :date_start %>
-        </div>
-        <%= f.input :date_finish %>
-        <div>
-          <%= f.submit %>
-        </div>
+        <%= f.input :date_start, as: :string, input_html: {class:"datepicker"} %>
+        <%= f.input :date_finish, as: :string, input_html: {class:"datepicker"} %>
+        <%= f.submit %>
       <% end %>
     </div>
   </div>
