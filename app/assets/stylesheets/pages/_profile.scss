@@ -1,27 +1,21 @@
-.fav-container h5 {
-  margin: 0 auto;
-  max-width: 800px;
-  background-color: #fff;
-  padding: 15px 25px;
-  border-radius: 8px;
+.page {
+  min-height: 87vh;
+}
+
+.fav-container {
+  margin: 4em auto;
+}
+
+.underline {
+  width: 100%;
+  border-bottom: 1px solid #F7A072;
 }
 
 .bear-thumbnail {
   border-radius: 8px;
+  backdrop-filter: sepia(90%);
+}
+
+.thumbnail {
   position: absolute;
-}
-
-.overlay {
-  width: 250px;
-  height: 250px;
-  background-color: #F7A072;
-  opacity: 0.5;
-  position: relative;
-  top: 0;
-  border-radius: 8px;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.overlay:hover {
-  opacity: 0;
 }

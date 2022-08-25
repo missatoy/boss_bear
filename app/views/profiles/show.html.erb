@@ -1,4 +1,4 @@
-<div class="container padding-top">
+<div class="page container padding-top">
   <div class="text-center mt-4">
     <h2>Hello <%= @profile.first_name %> </h2>
   </div>
@@ -13,6 +13,9 @@
         </li>
         <li class="nav-item-tab">
           <a class="nav-link" data-bs-toggle="tab" href="#profile">Profile</a>
+        </li>
+        <li class="nav-item-tab">
+          <a class="nav-link" data-bs-toggle="tab" href="#faves">Favourites</a>
         </li>
       </ul>
 
@@ -75,50 +78,22 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="fav-container">
-
-  <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      My Fav Bears
-    </button>
-  </p>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-        <div class="mt-2 d-flex flex-wrap justify-content-center">
-          <% @favourites.each do |favourite| %>
-            <div class= "m-3 shadow-sm">
-              <div class="thumbnail">
-                <% if favourite.bear.photo.attached? %>
-                  <%= cl_image_tag favourite.bear.photo.key, height: 250, width: 250, crop: :fill, class: "bear-thumbnail" %>
-                <% end %>
-                <div class="overlay">
+       <div class="tab-pane container fade mt-4" id="faves">
+          <div class="text-center">
+            <div class="mt-2 d-flex flex-wrap justify-content-center">
+              <% @favourites.each do |favourite| %>
+                <div class= "m-3 shadow-sm">
+                    <% if favourite.bear.photo.attached? %>
+                      <%= cl_image_tag favourite.bear.photo.key, height: 200, width: 200, crop: :fill, class: "bear-thumbnail" %>
+                    <% end %>
                 </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="mt-2 d-flex flex-wrap justify-content-center">
-      <% @favourites.each do |favourite| %>
-        <div class= "m-3 shadow-sm">
-          <div class="thumbnail">
-            <% if favourite.bear.photo.attached? %>
-              <%= cl_image_tag favourite.bear.photo.key, height: 250, width: 250, crop: :fill, class: "bear-thumbnail" %>
-            <% end %>
-            <div class="overlay">
+              <% end %>
             </div>
           </div>
-        </div>
-      <% end %>
+       </div>
+
+      </div>
     </div>
-
   </div>
-
-  </div>
+</div>
