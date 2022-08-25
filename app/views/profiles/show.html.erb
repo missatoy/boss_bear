@@ -1,14 +1,17 @@
 <div class="container">
+  <div class="text-center mt-4">
+    <h2>Hello <%= @profile.first_name %> </h2>
+  </div>
   <div class="row justify-content-center mt-4">
     <div class="col-sm-12 col-lg-7 shadow-sm p-4 show-details-card">
       <ul class="nav nav-tabs">
-        <li class="nav-item">
+        <li class="nav-item-tab">
           <a class="nav-link active" data-bs-toggle="tab" href="#bookings">Bookings</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item-tab">
           <a class="nav-link" data-bs-toggle="tab" href="#my-bears">My bears</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item-tab">
           <a class="nav-link" data-bs-toggle="tab" href="#profile">Profile</a>
         </li>
       </ul>
@@ -27,8 +30,11 @@
                   <h2><%= booking.bear.personality %> - <%= booking.date_start.day %>/<%= booking.date_start.month %> ~ <%= booking.date_finish.day %>/<%= booking.date_finish.month %></h2>
                 </div>
                 <h2 class="card-booking-pricing">€<%= booking.bear.price %></h2>
-                <p class="card-booking-delete"><%= link_to "Delete", bear_booking_path(booking.bear, booking),
-                                        data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to DELETE you booking?"} %></p>
+                <span class="card-booking-delete">
+                  <%= link_to bear_booking_path(booking.bear, booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to DELETE you booking?"} do %>
+                    <i class="fa-solid fa-trash" id="trash-can"></i>
+                  <% end %>
+                </span>
               </div>
             </div>
           <% end %>
@@ -36,10 +42,8 @@
         <div class="tab-pane container fade" id="my-bears">
 
         </div>
-        <div class="tab-pane container fade" id="profile">
-          <h1>Hello <%= @profile.first_name %> </h1>
-
-          <div>
+        <div class="tab-pane container fade mt-4" id="profile">
+          <div class="text-center">
             <% if @profile.photo.attached? %>
               <%= cl_image_tag @profile.photo.key,
                 width: 150, height: 150, crop: :thumb, gravity: :face, class: 'avatar-profile' %>

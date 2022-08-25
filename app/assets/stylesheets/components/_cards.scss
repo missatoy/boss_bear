@@ -24,6 +24,7 @@
   overflow: hidden;
   background: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 8px;
 }
 
 .card-booking > img {
@@ -56,7 +57,7 @@
 
 .card-booking-infos .card-booking-delete {
   position: absolute;
-  right: 16px;
+  right: 5px;
   top: -185px;
   width: 40px;
 }
@@ -65,4 +66,20 @@
   padding: 50px;
   border-radius: 8px;
   background-color: #fff;
+}
+
+#trash-can {
+  border: solid 7px;
+  border-color: #F7A072;
+  border-radius: 50%;
+  background-color: #F7A072;
+  color:rgb(255, 255, 255);
+  font-size: 20px;
+}
+
+#trash-can:hover {
+  color:white;
+  border-color: #df9167;
+  background-color: #df9167;
+  transition: 0.3s;
 }
