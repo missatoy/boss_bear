@@ -7,6 +7,7 @@ class User < ApplicationRecord
   after_create :create_profile
   has_many :bookings
   has_one :profile
+  has_many :favourites
 
   def create_profile
     Profile.create(user: self)

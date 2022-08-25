@@ -55,4 +55,21 @@
       </div>
     </div>
   </div>
+
+  <div class="mt-4">
+    <% @bookings.each do |booking| %>
+      <div>
+        <p><%= link_to "Delete booking", bear_booking_path(booking.bear, booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-4">
+    <% @favourites.each do |favourite| %>
+      <div>
+        <%= favourite.bear.name %>
+      </div>
+    <% end %>
+  </div>
 </div>
