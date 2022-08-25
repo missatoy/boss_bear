@@ -3,19 +3,19 @@
     <div class="col-sm-12 col-lg-7 shadow-sm p-4 show-details-card">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" data-bs-toggle="tab" href="#msg">Bookings</a>
+          <a class="nav-link active" data-bs-toggle="tab" href="#bookings">Bookings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#pro">My bears</a>
+          <a class="nav-link" data-bs-toggle="tab" href="#my-bears">My bears</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#set">Profile</a>
+          <a class="nav-link" data-bs-toggle="tab" href="#profile">Profile</a>
         </li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane container active" id="msg">
+        <div class="tab-pane container active" id="bookings">
           <% @bookings.each do |booking| %>
             <div class="card-booking mt-4">
               <% if booking.bear.photo.attached? %>
@@ -33,10 +33,10 @@
             </div>
           <% end %>
         </div>
-        <div class="tab-pane container fade" id="pro">
+        <div class="tab-pane container fade" id="my-bears">
 
         </div>
-        <div class="tab-pane container fade" id="set">
+        <div class="tab-pane container fade" id="profile">
           <h1>Hello <%= @profile.first_name %> </h1>
 
           <div>
@@ -54,15 +54,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="mt-4">
-    <% @bookings.each do |booking| %>
-      <div>
-        <p><%= link_to "Delete booking", bear_booking_path(booking.bear, booking),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
-      </div>
-    <% end %>
   </div>
 
   <div class="mt-4">
