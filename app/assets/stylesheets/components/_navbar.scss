@@ -1,5 +1,6 @@
 .navbar-lewagon {
   z-index: 999;
+  align-items: center;
   justify-content: space-between;
   padding: 12px;
   background-color: transparent;
@@ -20,18 +21,19 @@
   width: 210px;
 }
 
-.nav-link,
+.navbar-link {
+  margin-right: 10px;
+}
+
+.navbar-link,
 .dropdown-item {
+  text-decoration: none;
   font-size: 18px;
   transition: color .5s ease-in-out;
 }
 
-.nav-link {
-  margin-right: 10px;
-}
-
-.nav-link:hover {
-  color: #F7A072;
+.navbar-link:hover {
+  color: #f7a072 !important;
 }
 
 .dropdown-item:hover {
