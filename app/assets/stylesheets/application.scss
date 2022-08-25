@@ -16,6 +16,7 @@
 @import "components/form";
 @import "components/cards";
 @import "components/buttons";
+@import "components/tab";
 @import "components/favourite";
 
 * {
@@ -33,6 +34,10 @@ h1 {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Fjalla One', sans-serif;
+}
+
+h2 {
+  font-size: 54px ;
 }
 
 p {

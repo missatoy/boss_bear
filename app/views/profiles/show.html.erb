@@ -1,47 +1,63 @@
 <div class="container">
-  <h2 class="mt-4">Your bookings</h2>
-  <div class="d-flex">
-    <div class="d-flex justify-content-around col-8">
-      <% @bookings.each do |booking| %>
-        <div class="card-booking mt-4">
-            <% if booking.bear.photo.attached? %>
-              <%= cl_image_tag booking.bear.photo.key,
-                width: 150, height: 150, crop: :thumb, gravity: :face %>
-            <% end %>
-            <div class="card-booking-infos">
-                  <h2><%= booking.date_start.day %>/<%= booking.date_start.month %> ~ <%= booking.date_finish.day %>/<%= booking.date_finish.month %></h2>
-                  <p><%= link_to "Cancel booking", bear_booking_path(booking.bear, booking),
-                          data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to DELETE you booking?"} %></p>
-            </div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="col-4">
-      <h1>Hello <%= @profile.first_name %> </h1>
-
-      <div>
-        <% if @profile.photo.attached? %>
-          <%= cl_image_tag @profile.photo.key,
-            width: 150, height: 150, crop: :thumb, gravity: :face, class: 'avatar-profile' %>
-        <% end %>
-      </div>
-
-      <div class="mt-4">
-        <div>
-          <%= render "form", profile: @profile %>
-        </div>
-      </div>
-    </div>
+  <div class="text-center mt-4">
+    <h2>Hello <%= @profile.first_name %> </h2>
   </div>
+  <div class="row justify-content-center mt-4">
+    <div class="col-sm-12 col-lg-7 shadow-sm p-4 show-details-card">
+      <ul class="nav nav-tabs">
+        <li class="nav-item-tab">
+          <a class="nav-link active" data-bs-toggle="tab" href="#bookings">Bookings</a>
+        </li>
+        <li class="nav-item-tab">
+          <a class="nav-link" data-bs-toggle="tab" href="#my-bears">My bears</a>
+        </li>
+        <li class="nav-item-tab">
+          <a class="nav-link" data-bs-toggle="tab" href="#profile">Profile</a>
+        </li>
+      </ul>
 
-  <div class="mt-4">
-    <% @bookings.each do |booking| %>
-      <div>
-        <p><%= link_to "Delete booking", bear_booking_path(booking.bear, booking),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane container active" id="bookings">
+          <% @bookings.each do |booking| %>
+            <div class="card-booking mt-4">
+              <% if booking.bear.photo.attached? %>
+                            <%= cl_image_tag booking.bear.photo.key,
+                                  crop: :thumb, gravity: :face %>
+                          <% end %>
+              <div class="card-booking-infos">
+                <div>
+                  <h2><%= booking.bear.personality %> - <%= booking.date_start.day %>/<%= booking.date_start.month %> ~ <%= booking.date_finish.day %>/<%= booking.date_finish.month %></h2>
+                </div>
+                <h2 class="card-booking-pricing">€<%= booking.bear.price %></h2>
+                <span class="card-booking-delete">
+                  <%= link_to bear_booking_path(booking.bear, booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to DELETE you booking?"} do %>
+                    <i class="fa-solid fa-trash" id="trash-can"></i>
+                  <% end %>
+                </span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane container fade" id="my-bears">
+
+        </div>
+        <div class="tab-pane container fade mt-4" id="profile">
+          <div class="text-center">
+            <% if @profile.photo.attached? %>
+              <%= cl_image_tag @profile.photo.key,
+                width: 150, height: 150, crop: :thumb, gravity: :face, class: 'avatar-profile' %>
+            <% end %>
+          </div>
+
+          <div class="mt-4">
+            <div>
+              <%= render "form", profile: @profile %>
+            </div>
+          </div>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
 
   <div class="mt-4">
