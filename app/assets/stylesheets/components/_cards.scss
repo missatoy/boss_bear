@@ -34,15 +34,16 @@
 }
 
 .card-booking h2 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-booking p {
-  font-size: 12px;
+  font-size: 14px;
   opacity: .7;
   margin: 0;
+  margin-left: 8px;
 }
 
 
@@ -82,4 +83,42 @@
   border-color: #df9167;
   background-color: #df9167;
   transition: 0.3s;
+}
+
+.card-bear {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.card-bear img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-bear h2 {
+  color: #0E0000;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  text-decoration: none;
+}
+
+.card-bear p {
+  color: #0E0000;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  text-decoration: none;
+}
+
+.card-bear .card-bear-infos {
+  padding: 16px;
 }

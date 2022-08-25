@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   def show
     @bookings = @profile.bookings
     @favourites = current_user.favourites
+    @bears = current_user.bears
   end
 
   def edit

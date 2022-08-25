@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_one :profile
   has_many :favourites
+  has_many :bears
 
   def create_profile
     Profile.create(user: self)

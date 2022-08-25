@@ -26,10 +26,15 @@
                                   crop: :thumb, gravity: :face %>
                           <% end %>
               <div class="card-booking-infos">
-                <div>
-                  <h2><%= booking.bear.personality %> - <%= booking.date_start.day %>/<%= booking.date_start.month %> ~ <%= booking.date_finish.day %>/<%= booking.date_finish.month %></h2>
+                <div class="d-flex">
+                  <div>
+                    <h2 class="profile-cards-font"><%= booking.bear.name %></h2>
+                  </div>
+                  <div>
+                    <p class="profile-cards-font ml-1 paragraph"><%= booking.bear.personality %> - <%= booking.date_start.day %>/<%= booking.date_start.month %> ~ <%= booking.date_finish.day %>/<%= booking.date_finish.month %></p>
+                  </div>
                 </div>
-                <h2 class="card-booking-pricing">€<%= booking.bear.price %></h2>
+                <h2 class="card-booking-pricing profile-cards-font">€<%= booking.bear.price %></h2>
                 <span class="card-booking-delete">
                   <%= link_to bear_booking_path(booking.bear, booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to DELETE you booking?"} do %>
                     <i class="fa-solid fa-trash" id="trash-can"></i>
@@ -39,9 +44,24 @@
             </div>
           <% end %>
         </div>
-        <div class="tab-pane container fade" id="my-bears">
 
+        <div class="tab-pane container fade" id="my-bears">
+          <% @bears.each do |bear| %>
+            <%= link_to bear_path(bear) do %>
+              <div class="card-bear mt-4">
+                <% if bear.photo.attached? %>
+                            <%= cl_image_tag bear.photo.key,
+                                  crop: :thumb, gravity: :face %>
+                          <% end %>
+                <div class="card-bear-infos">
+                  <h2 class="profile-cards-font"><%= bear.name %></h2>
+                  <p class="profile-cards-font"><%= bear.personality %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
+
         <div class="tab-pane container fade mt-4" id="profile">
           <div class="text-center">
             <% if @profile.photo.attached? %>
@@ -49,7 +69,6 @@
                 width: 150, height: 150, crop: :thumb, gravity: :face, class: 'avatar-profile' %>
             <% end %>
           </div>
-
           <div class="mt-4">
             <div>
               <%= render "form", profile: @profile %>
