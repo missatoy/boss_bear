@@ -2,14 +2,19 @@
   <div class="d-flex align-items-start justify-content-between mt-4">
     <div class="col-7">
       <div>
-        <% if @bear.photo.attached? %>
-          <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
-        <% end %>
-        <h1><%= @bear.name %></h1>
-        <h2><%= @bear.personality %></h2>
+        <div class="card-bear mb-3">
+          <% if @bear.photo.attached? %>
+            <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
+          <% end %>
+        </div>
+        <h1 class="mb-3"><%= @bear.name %></h1>
+        <h4 class="mb-3"><%= @bear.personality %></h4>
+        <p class="mb-3"><%= @bear.description %></p>
+        <p class="price-button">€<%= @bear.price %></p>
       </div>
 
       <div>
+<<<<<<< HEAD
         <p><%= @bear.description %></p>
         <p><%= @bear.price %></p>
         <% if @favourite.exists? %>
@@ -21,27 +26,19 @@
             <i class="fa-regular fa-heart"></i>
           <% end %>
         <% end %>
+=======
+
+>>>>>>> c64c7b05a8af8789fc787b2513b533c4dcbe1399
       </div>
     </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <% if @bear.photo.attached? %>
-          <%= cl_image_tag @bear.photo.key, height: 400, width: 400, crop: :fill %>
-        <% end %>
-        <p></p>
-        <p><%= @bear.description %></p>
-        <p><%= @bear.price %></p>
-      </div>
-      <div class="col-sm">
-
-      <div data-controller="flatpickr">
+    <div class="col-4 p-4 bg-white rounded shadow p-3 mb-5 bg-white rounded">
+      <div data-controller="flatpickr" class="form-height">
       <%= simple_form_for([@bear, @booking]) do |f| %>
-      <%= f.input :date_start, as: :string, input_html: {class:"datepicker"} %>
-      <%= f.input :date_finish, as: :string, input_html: {class:"datepicker"} %>
-      <%= f.submit %>
-    <% end %>
-   </div>
+        <%= f.input :date_start, as: :string, input_html: {class:"datepicker"} %>
+        <%= f.input :date_finish, as: :string, input_html: {class:"datepicker"} %>
+        <%= f.submit class: 'button primary-button' %>
+      <% end %>
+    </div>
   </div>
 </div>

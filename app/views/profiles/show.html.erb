@@ -1,19 +1,40 @@
 <div class="container">
+  <h2 class="mt-4">Your bookings</h2>
+  <div class="d-flex">
+    <div class="d-flex justify-content-around col-8">
+      <% @bookings.each do |booking| %>
+        <div class="card-booking mt-4">
+            <% if booking.bear.photo.attached? %>
+              <%= cl_image_tag booking.bear.photo.key,
+                width: 150, height: 150, crop: :thumb, gravity: :face %>
+            <% end %>
+            <div class="card-booking-infos">
+                  <h2><%= booking.date_start.day %>/<%= booking.date_start.month %> ~ <%= booking.date_finish.day %>/<%= booking.date_finish.month %></h2>
+                  <p><%= link_to "Cancel booking", bear_booking_path(booking.bear, booking),
+                          data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to DELETE you booking?"} %></p>
+            </div>
+        </div>
+      <% end %>
+    </div>
 
-  <h1>Hello <%= @profile.first_name %> </h1>
+    <div class="col-4">
+      <h1>Hello <%= @profile.first_name %> </h1>
 
-  <div>
-    <% if @profile.photo.attached? %>
-      <%= cl_image_tag @profile.photo.key,
-        width: 150, height: 150, crop: :thumb, gravity: :face %>
-    <% end %>
-  </div>
+      <div>
+        <% if @profile.photo.attached? %>
+          <%= cl_image_tag @profile.photo.key,
+            width: 150, height: 150, crop: :thumb, gravity: :face, class: 'avatar-profile' %>
+        <% end %>
+      </div>
 
-  <div class="mt-4">
-    <div>
-      <%= render "form", profile: @profile %>
+      <div class="mt-4">
+        <div>
+          <%= render "form", profile: @profile %>
+        </div>
+      </div>
     </div>
   </div>
+<<<<<<< HEAD
 
   <div class="mt-4">
     <% @bookings.each do |booking| %>
@@ -31,4 +52,6 @@
       </div>
     <% end %>
   </div>
+=======
+>>>>>>> c64c7b05a8af8789fc787b2513b533c4dcbe1399
 </div>
