@@ -1,14 +1,18 @@
 <div class="container padding-top">
-
-  <h1>Tell us more about your bear</h1>
-
-  <%= simple_form_for(@bear) do |f| %>
-    <%= f.input :name, input_html: {class:"form-control-new"}%>
-    <%= f.input :personality, input_html: {class:"form-control-new"} %>
-    <%= f.input :description, input_html: {class:"form-control-new"} %>
-    <%= f.input :price, input_html: {class:"form-control-new"} %>
-    <%= f.input :photo, as: :file, input_html: {class:"form-control-new"} %>
-    <%= f.submit %>
-  <% end %>
-
+  <div class="d-flex justify-content-center flex-column">
+    <div class="card-lend-form col-sm-12 col-lg-6 mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      Breakfast
+    </div>
+    <div class="col-sm-12 col-lg-6">
+      <h1 class="text-center">Tell us more about your bear</h1>
+        <%= simple_form_for(@bear) do |f| %>
+          <%= f.input :name, input_html: {class:"form-control-new"}%>
+          <%= f.input :personality, input_html: {class:"form-control-new"} %>
+          <%= f.input :description, input_html: {class:"form-control-new"} %>
+          <%= f.input :price, input_html: {class:"form-control-new"} %>
+          <%= f.input :photo, as: :file, input_html: {class:"form-control-new"} %>
+          <%= f.submit class: 'button secondary-button'%>
+        <% end %>
+    </div>
+  </div>
 </div>
