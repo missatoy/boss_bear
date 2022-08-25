@@ -1,6 +1,15 @@
 .navbar-lewagon {
+  z-index: 999;
   justify-content: space-between;
-  background: white;
+  padding: 12px;
+  background-color: transparent;
+  height: 6rem;
+  transition: all .5s ease-in-out;
+}
+
+.scrolling-active {
+  background-color: #FFFDF4;
+  height: 5rem;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +17,29 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 200px;
+  width: 210px;
+}
+
+.nav-link,
+.dropdown-item {
+  font-size: 18px;
+  transition: color .5s ease-in-out;
+}
+
+.nav-link {
+  margin-right: 10px;
+}
+
+.nav-link:hover {
+  color: #F7A072;
+}
+
+.dropdown-item:hover {
+  background-color: #f7a172a8;
+}
+
+.dropdown-menu {
+  padding-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
 }
