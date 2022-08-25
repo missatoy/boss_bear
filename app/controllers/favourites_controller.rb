@@ -5,7 +5,7 @@ class FavouritesController < ApplicationController
     @bear = Bear.find(params[:bear_id])
     @favourite.bear = @bear
     if @favourite.save
-      redirect_to bear_path(@bear, anchor: "favourite"), status: :see_other, notice: "Added successfully"
+      redirect_to bear_path(@bear), status: :see_other, notice: "Added successfully"
     else
       render :new, notice: "Oops. Something went wrong...", status: :unprocessable_entity
     end

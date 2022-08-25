@@ -1,0 +1,32 @@
+.card-category {
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  z-index: 0;
+  height: 90vh;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.show-details {
+  padding: 50px;
+  border-radius: 8px;
+  position: relative;
+  top: -115px;
+  background-color: #fff;
+}
+
+.name {
+  margin-left: 20px;
+  color: #282635;
+  text-shadow: 1px 1px 3px rgba(18, 18, 19, 0.2);
+}
+
+.personality {
+  color: rgb(108, 117, 125);
+}
+
+.price {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
