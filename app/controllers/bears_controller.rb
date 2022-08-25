@@ -9,7 +9,7 @@ class BearsController < ApplicationController
   # As a visitor I can display one bear's details
   def show
     @booking = Booking.new
-    @favourite = current_user.favourites.where(bear_id: @bear.id)
+    @favourite = current_user.favourites.where(bear_id: @bear.id).first
   end
 
   # As a renter I can create a new bear
@@ -42,7 +42,7 @@ class BearsController < ApplicationController
   # As a renter I can delete a bear
   def destroy
     @bear.destroy
-    redirect_to profile_path(@bear.profile)
+    redirect_to profile_path(@bear.profile), status: :unprocessable_entity
   end
 
   private
