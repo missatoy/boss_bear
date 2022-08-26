@@ -47,7 +47,7 @@ class BearsController < ApplicationController
   # As a renter I can delete a bear
   def destroy
     @bear.destroy
-    redirect_to profile_path(@bear.profile), status: :unprocessable_entity
+    redirect_to profile_path(@bear.profile), status: :see_other
   end
 
   private
