@@ -23,7 +23,32 @@
 
       <h4 class="mb-3 personality"><%= @bear.personality %></h4>
       <p class="mb-3"><%= @bear.description %></p>
-      <h5 class="price-button price">€<%= @bear.price %></h5>
+      <div class="d-flex justify-content-between">
+        <div>
+          <h5 class="price-button price">€<%= @bear.price %></h5>
+        </div>
+        <div>
+          <%= link_to edit_bear_path(@bear) do %>
+            <div>
+              <h5 class ="edit">Edit</h5>
+            </div>
+          <% end %>
+        </div>
+
+        <%# <% current_user.bears.id.each do |id| %>
+          <%# <% if id == @bear.id %>
+            <%# <div> %>
+              <%# <%= link_to edit_bear_path(@bear) do %>
+              <%# <div> %>
+                <%# <h5 class ="edit">Edit</h5> %>
+              <%# </div> %>
+              <%# <% end %>
+            <%# </div> %>
+          <%# <% end %>
+        <%# <% end %>
+
+
+      </div>
 
     </div>
 
