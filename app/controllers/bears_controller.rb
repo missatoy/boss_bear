@@ -1,5 +1,5 @@
 class BearsController < ApplicationController
-  before_action :find_bear, only: %i[show edit destroy]
+  before_action :find_bear, only: %i[show edit destroy update]
   skip_before_action :authenticate_user!, only: %i[index show]
   # As a visitor I can display all bears
   def index
