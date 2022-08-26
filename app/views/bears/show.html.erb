@@ -27,12 +27,21 @@
         <div>
           <h5 class="price-button price">€<%= @bear.price %></h5>
         </div>
-        <div>
-          <%= link_to edit_bear_path(@bear) do %>
-            <div>
-              <h5 class ="edit">Edit</h5>
-            </div>
-          <% end %>
+        <div class="d-flex">
+          <div class="m-1">
+            <%= link_to edit_bear_path(@bear) do %>
+              <div>
+                <h5 class ="edit">Edit</h5>
+              </div>
+            <% end %>
+          </div>
+          <div class="m-1">
+            <%= link_to bear_path(@bear), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete your bear? 😢"} do %>
+              <div>
+                <h5 class ="edit">Delete</h5>
+              </div>
+            <% end %>
+          </div>
         </div>
 
         <%# <% current_user.bears.id.each do |id| %>

@@ -6,11 +6,10 @@ class Bear < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   has_one_attached :photo
   validates :photo, presence: true
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   include PgSearch::Model
-
-  multisearchable against: %i[name personality description]
 
   pg_search_scope :search_by_name_and_description,
                   against: %i[name personality description],
