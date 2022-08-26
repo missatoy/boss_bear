@@ -3,7 +3,12 @@ class BearsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   # As a visitor I can display all bears
   def index
-    @bears = Bear.all
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR personality ILIKE :query OR description ILIKE :query"
+      @bears = Bear.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @bears = Bear.all
+    end
   end
 
   # As a visitor I can display one bear's details

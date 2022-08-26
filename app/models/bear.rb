@@ -7,4 +7,14 @@ class Bear < ApplicationRecord
   has_one_attached :photo
   validates :photo, presence: true
   has_many :favourites
+
+  include PgSearch::Model
+
+  multisearchable against: %i[name personality description]
+
+  pg_search_scope :search_by_name_and_description,
+                  against: %i[name personality description],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end
