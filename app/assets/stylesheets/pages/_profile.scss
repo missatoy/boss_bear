@@ -1,0 +1,50 @@
+.page {
+  min-height: 87vh;
+}
+
+.fav-container {
+  margin: 4em auto;
+}
+
+.thumbnail {
+  position: relative;
+  margin: 10px;
+}
+
+.bear-thumbnail {
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity .5s ease;
+  background-color: #FD7547;
+}
+
+.thumbnail:hover .overlay {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.overlay-text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

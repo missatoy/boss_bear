@@ -1,4 +1,4 @@
-<div class="container padding-top">
+<div class="page container padding-top">
   <div class="text-center mt-4">
     <h2>Hello <%= @profile.first_name %> </h2>
   </div>
@@ -13,6 +13,9 @@
         </li>
         <li class="nav-item-tab">
           <a class="nav-link" data-bs-toggle="tab" href="#profile">Profile</a>
+        </li>
+        <li class="nav-item-tab">
+          <a class="nav-link" data-bs-toggle="tab" href="#faves">Favourites</a>
         </li>
       </ul>
 
@@ -75,15 +78,27 @@
             </div>
           </div>
         </div>
+
+       <div class="tab-pane container fade mt-4" id="faves">
+          <div class="text-center">
+            <div class="mt-2 d-flex flex-wrap justify-content-center">
+              <% @favourites.each do |favourite| %>
+                  <%= link_to bear_path(favourite.bear) do %>
+                    <div class="thumbnail">
+                      <% if favourite.bear.photo.attached? %>
+                        <%= cl_image_tag favourite.bear.photo.key, height: 200, width: 200, crop: :fill, class: "bear-thumbnail" %>
+                      <% end %>
+                      <div class="overlay">
+                        <div class="overlay-text"><%= favourite.bear.name %></div>
+                      </div>
+                    </div>
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-
-  <div class="mt-4">
-    <% @favourites.each do |favourite| %>
-      <div>
-        <%= favourite.bear.name %>
-      </div>
-    <% end %>
   </div>
 </div>
