@@ -5,9 +5,9 @@ class BookingsController < ApplicationController
     @bear = Bear.find(params[:bear_id])
     @booking.bear = @bear
     if @booking.save
-      redirect_to bears_path
+      redirect_to profile_path(current_user.profile)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
