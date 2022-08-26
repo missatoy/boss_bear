@@ -8,6 +8,7 @@
 
 puts 'Cleaning up users database...'
 Profile.destroy_all
+Booking.destroy_all
 Bear.destroy_all
 User.destroy_all
 puts 'Database cleaned'
@@ -17,5 +18,6 @@ User.create(email: "ladygaga@gmail.com", password: "123456")
 User.create(email: "beyonce@gmail.com", password: "123456")
 User.create(email: "mariah@gmail.com", password: "123456")
 User.create(email: "ariana@gmail.com", password: "123456")
+User.all.each { |user| user.create_profile }
 
 puts 'Database populated :)'
