@@ -83,15 +83,20 @@
           <div class="text-center">
             <div class="mt-2 d-flex flex-wrap justify-content-center">
               <% @favourites.each do |favourite| %>
-                <div class= "m-3 shadow-sm">
-                    <% if favourite.bear.photo.attached? %>
-                      <%= cl_image_tag favourite.bear.photo.key, height: 200, width: 200, crop: :fill, class: "bear-thumbnail" %>
-                    <% end %>
-                </div>
+                  <%= link_to bear_path(favourite.bear) do %>
+                    <div class="thumbnail">
+                      <% if favourite.bear.photo.attached? %>
+                        <%= cl_image_tag favourite.bear.photo.key, height: 200, width: 200, crop: :fill, class: "bear-thumbnail" %>
+                      <% end %>
+                      <div class="overlay">
+                        <div class="overlay-text"><%= favourite.bear.name %></div>
+                      </div>
+                    </div>
+                  <% end %>
               <% end %>
             </div>
           </div>
-       </div>
+        </div>
 
       </div>
     </div>
