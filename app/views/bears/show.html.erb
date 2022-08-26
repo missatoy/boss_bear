@@ -9,16 +9,18 @@
     <div class="col-sm-12 col-lg-7">
 
       <div class="d-flex flex-inline">
-        <% if @favourite %>
-          <%= link_to favourite_path(@favourite) ,data: { 'turbo-method': :delete } do %>
-            <i class="fa-solid fa-heart"></i>
+        <% if user_signed_in? %>
+          <% if @favourite %>
+            <%= link_to favourite_path(@favourite) ,data: { 'turbo-method': :delete } do %>
+              <i class="fa-solid fa-heart"></i>
+            <% end %>
+          <% else %>
+            <%= link_to bear_favourites_path(@bear) ,data: { 'turbo-method': :post } do %>
+              <i class="fa-regular fa-heart"></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to bear_favourites_path(@bear) ,data: { 'turbo-method': :post } do %>
-            <i class="fa-regular fa-heart"></i>
-          <% end %>
+          <h1 class="name"><%= @bear.name %></h1>
         <% end %>
-        <h1 class="name"><%= @bear.name %></h1>
       </div>
 
       <h4 class="mb-3 personality"><%= @bear.personality %></h4>
@@ -28,24 +30,26 @@
           <h5 class="price-button price">€<%= @bear.price %></h5>
         </div>
         <div class="d-flex">
-        <% current_user.bears.ids.each do |id| %>
-          <% if id == @bear.id %>
-            <div class="m-1">
-              <%= link_to edit_bear_path(@bear) do %>
-                <div>
-                  <h5 class ="edit">Edit</h5>
+          <% if user_signed_in? %>
+            <% current_user.bears.ids.each do |id| %>
+              <% if id == @bear.id %>
+                <div class="m-1">
+                  <%= link_to edit_bear_path(@bear) do %>
+                    <div>
+                      <h5 class ="edit">Edit</h5>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="m-1">
+                  <%= link_to bear_path(@bear), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete your bear? 😢"} do %>
+                    <div>
+                      <h5 class ="edit">Delete</h5>
+                    </div>
+                  <% end %>
                 </div>
               <% end %>
-            </div>
-            <div class="m-1">
-              <%= link_to bear_path(@bear), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete your bear? 😢"} do %>
-                <div>
-                  <h5 class ="edit">Delete</h5>
-                </div>
-              <% end %>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
         </div>
       </div>
     </div>
@@ -53,16 +57,24 @@
     <div class="col-lg-1"></div>
 
 
-    <div class="col-sm-12 col-lg-4 p-4 bg-white rounded shadow p-3 mb-5 bg-white rounded">
-      <div data-controller="flatpickr" class="form-height">
-      <%= simple_form_for([@bear, @booking]) do |f| %>
-        <%= f.input :date_start, as: :string, input_html: {class:"datepicker"} %>
-        <%= f.input :date_finish, as: :string, input_html: {class:"datepicker"} %>
-        <%= f.submit class: 'button primary-button' %>
-      <% end %>
+    <% if user_signed_in? %>
+      <div class="col-sm-12 col-lg-4 p-4 bg-white rounded shadow p-3 mb-5 bg-white rounded">
+        <div data-controller="flatpickr" class="form-height">
+        <%= simple_form_for([@bear, @booking]) do |f| %>
+          <%= f.input :date_start, as: :string, input_html: {class:"datepicker"} %>
+          <%= f.input :date_finish, as: :string, input_html: {class:"datepicker"} %>
+          <%= f.submit class: 'button primary-button' %>
+        <% end %>
+        </div>
       </div>
-    </div>
-
+    <% else %>
+      <div class="col-sm-12 col-lg-4 p-4 shadow mb-5 bg-white rounded d-flex flex-column">
+        <h3 class="text-center">Login to book <%= @bear.name %>!</h3>
+        <%= link_to new_user_session_path, :method => :get, class: 'text-white' do %>
+          <p class="button primary-button w-100">Log in</p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
 </div>
