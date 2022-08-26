@@ -29,7 +29,6 @@
 
 body {
   background-color: #FFFDF4;
-  min-height: 100vh;
 }
 
 h1 {
@@ -54,4 +53,8 @@ h2 {
 
 p {
   font-family: 'Roboto', sans-serif;
+}
+
+.body-container {
+  min-height: 87vh !important;
 }
