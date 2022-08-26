@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one :profile
   after_create :create_profile
   has_many :bookings
-  has_one :profile
   has_many :favourites
   has_many :bears
 
