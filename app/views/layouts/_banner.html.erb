@@ -8,6 +8,7 @@
             <div class="text">
               <%= text_field_tag :query, params[:query], class: "form-control",
                   placeholder: "Find a bear" %>
+              <small><%= link_to "Reset search", bears_path %></small>
             </div>
             <div class="search">
               <%= submit_tag "Search", class: "button primary-button" %>

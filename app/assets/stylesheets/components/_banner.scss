@@ -40,3 +40,18 @@
 .form-container .button {
   margin-left: 10px !important;
 }
+
+.form-container small {
+  position: relative;
+  top: -22px;
+  left: -42px;
+}
+
+.form-container small a {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.form-container small a:hover {
+  opacity: 1;
+}
