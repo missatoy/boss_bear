@@ -49,11 +49,10 @@
 .dropdown-item {
   text-decoration: none;
   font-size: 18px;
-  transition: color .5s ease-in-out;
 }
 
-.navbar-link:hover {
-  color: #f7a072 !important;
+.orange-hover:hover {
+  color: #f7a072
 }
 
 .dropdown-item:hover {
