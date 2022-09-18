@@ -6,13 +6,13 @@
     <div class="form-container">
         <%= form_with url: bears_path, method: :get do |f| %>
             <div class="text">
-              <%= text_field_tag :query, params[:query], class: "form-control",
+              <%= text_field_tag :query, params[:query], class: "form-control input-field-height",
                   placeholder: "Find a bear" %>
-              <small><%= link_to "Reset search", bears_path %></small>
             </div>
             <div class="search">
               <%= submit_tag "Search", class: "button primary-button" %>
             </div>
+            <small><%= link_to "Reset search", bears_path %></small>
         <% end %>
     </div>
   </div>

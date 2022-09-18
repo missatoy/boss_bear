@@ -31,6 +31,8 @@
 
 .form-container form {
   display: inline-flex;
+  position: relative;
+  left: 20px;
 }
 
 .form-container input {
@@ -43,8 +45,8 @@
 
 .form-container small {
   position: relative;
-  top: -22px;
-  left: -42px;
+  top: 55px;
+  left: -305px;
 }
 
 .form-container small a {
