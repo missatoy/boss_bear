@@ -1,40 +1,83 @@
-<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
-  <div class="container-fluid">
-    <%= link_to bears_path, class: "navbar-brand" do %>
-      <%= image_tag "boss-bear-logo.png" %>
-    <% end %>
+<% if controller_name == "bears" && action_name == "index" %>
+  <div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
+    <div class="container-fluid">
+      <%= link_to bears_path, class: "navbar-brand" do %>
+        <%= image_tag "boss-bear-logo.png" %>
+      <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Homepage", bears_path, class: "nav-link navbar-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Lend a Bear", new_bear_path, class: "nav-link navbar-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <% if current_user.profile.photo.attached? %>
-              <%= cl_image_tag current_user.profile.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Profile", profile_path(current_user.profile), class: "dropdown-item" %>
-              <%# <%= link_to "Manage bookings", profile_path(current_user), class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Homepage", bears_path, class: "nav-link navbar-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Lend a Bear", new_bear_path, class: "nav-link navbar-link" %>
+            </li>
+            <li class="nav-item dropdown">
+              <% if current_user.profile.photo.attached? %>
+                <%= cl_image_tag current_user.profile.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% else %>
+                <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "My Profile", profile_path(current_user.profile), class: "dropdown-item" %>
+                <%# <%= link_to "Manage bookings", profile_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon-not-home">
+    <div class="container-fluid">
+      <%= link_to bears_path, class: "navbar-brand" do %>
+        <%= image_tag "boss-bear-logo.png" %>
+      <% end %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Homepage", bears_path, class: "nav-link navbar-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Lend a Bear", new_bear_path, class: "nav-link navbar-link" %>
+            </li>
+            <li class="nav-item dropdown">
+              <% if current_user.profile.photo.attached? %>
+                <%= cl_image_tag current_user.profile.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% else %>
+                <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "My Profile", profile_path(current_user.profile), class: "dropdown-item" %>
+                <%# <%= link_to "Manage bookings", profile_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
