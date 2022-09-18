@@ -1,30 +1,28 @@
 <%= render "layouts/banner" %>
-
   <div class="container">
-
+    <div class="row">
       <% if @bears.size == 0 %>
         <h4 class="text-center no-results-message">Sorry, seems like there are no gummy bears matching your search...</h4>
       <% else %>
-        <div class="d-flex flex-wrap pt-4">
         <% @bears.each do |bear|%>
-          <% if bear.user.valid? == false %>
-            <% redirect_to 'users/sign_in' %>
-          <% else %>
-            <%= link_to bear_path(bear.id) do %>
-              <div class="card shadow-sm m-3" style="width: 18rem;">
+          <div class="pt-4 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <% if bear.user.valid? == false %>
+              <% redirect_to 'users/sign_in' %>
+            <% else %>
+              <%= link_to bear_path(bear.id) do %>
+                <div class="card shadow-sm" style="width: 18rem;">
                   <% if bear.photo.attached? %>
                     <%= cl_image_tag bear.photo.key, height: 400, width: 400, crop: :fill, class: "card-img-top" %>
                   <% end %>
-                <div class="card-body text-dark">
-                  <h5 class="card-title mb-2"><%= bear.name %></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><%= bear.personality %></h6>
+                  <div class="card-body text-dark">
+                    <h5 class="card-title mb-2"><%= bear.name %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= bear.personality %></h6>
+                  </div>
                 </div>
-              </div>
             <% end %>
-          <% end %>
+          </div>
         <% end %>
+      <% end %>
     </div>
-
   </div>
-
 <% end %>
