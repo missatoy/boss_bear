@@ -8,6 +8,17 @@
   transition: all .5s ease-in-out;
 }
 
+.navbar-lewagon-not-home {
+  z-index: 999;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: #FFFDF4;
+  height: 5rem;
+  transition: all .5s ease-in-out;
+  box-shadow: 0 1px 10px -2px rgba(0,0,0,.2);
+}
+
 .scrolling-active {
   background-color: #FFFDF4;
   box-shadow: 0 1px 10px -2px rgba(0,0,0,.2);
@@ -17,7 +28,15 @@
   flex-grow: 0;
 }
 
+.navbar-lewagon-not-home .navbar-collapse {
+  flex-grow: 0;
+}
+
 .navbar-lewagon .navbar-brand img {
+  width: 210px;
+}
+
+.navbar-lewagon-not-home .navbar-brand img {
   width: 210px;
 }
 
